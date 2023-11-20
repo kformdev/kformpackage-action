@@ -23,4 +23,3 @@ runs:
     env:
       INPUT_PKG_DIR: ${{ inputs.pkgDir }}
       INPUT_VERSION_TAG: ${{ inputs.versionTag }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
