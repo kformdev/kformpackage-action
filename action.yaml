@@ -1,17 +1,15 @@
 name: 'KformPackage Action'
 description: 'KformPackage Action, a release automation tool for Kform provider and modules'
 author: 'kform'
-branding:
-  color: 'green'
-  icon: 'package'
 
 inputs:
   pkg_dir:
     description: 'Directory from which the package is source from'
-    default: 'config'
+    default: config
     required: false
   version_tag:
     description: 'Version tag used to build the package'
+    default: dummy
     required: true
 outputs:
   artifacts:
