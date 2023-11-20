@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	pkgDir := os.Getenv("INPUT_PKGDIR")
-	versionTag := os.Getenv("INPUT_VERSIONTAG")
+	pkgDir := os.Getenv("INPUT_PKG_DIR")
+	versionTag := os.Getenv("INPUT_VERSION_TAG")
 
 	fmt.Println("pkgDir", pkgDir)
 	fmt.Println("versionTag", versionTag)
