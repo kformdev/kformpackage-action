@@ -6,11 +6,11 @@ branding:
   icon: 'package'
 
 inputs:
-  pkgDir:
+  pkg_dir:
     description: 'Directory from which the package is source from'
     default: 'config'
     required: false
-  versionTag:
+  version_tag:
     description: 'Version tag used to build the package'
     required: true
 outputs:
