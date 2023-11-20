@@ -24,4 +24,4 @@ jobs:
     - name: kformpackage-action
       uses: kformdev/kformpackage-action@v0.0.1
       with:
-        version_tag: testversiontag
+        versionTag: testVersionTAG

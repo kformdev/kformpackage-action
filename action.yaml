@@ -20,3 +20,6 @@ runs:
   steps:
   - run: go run main.go
     shell: bash
+    env:
+      INPUT_PKG_DIR: ${{ inputs.pkgDir }}
+      INPUT_VERSION_TAG: ${{ inputs.versionTag }}
