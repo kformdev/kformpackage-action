@@ -1,0 +1,24 @@
+name: 'KformPackage Action'
+description: 'KformPackage Action, a release automation tool for Kform provider and modules'
+author: 'kform'
+branding:
+  color: 'green'
+  icon: 'package'
+
+inputs:
+  pkgDir:
+    description: 'Directory from which the package is source from'
+    default: 'config'
+    required: false
+  versionTag:
+    description: 'Version tag used to build the package'
+    required: true
+outputs:
+  artifacts:
+    description: 'Build result artifacts'
+
+runs:
+  using: composite
+  steps:
+  - run: go run kformpackage-action.go
+    shell: bash
