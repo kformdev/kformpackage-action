@@ -3,11 +3,11 @@ description: 'KformPackage Action, a release automation tool for Kform provider 
 author: 'kform'
 
 inputs:
-  pkg_dir:
+  pkgDir:
     description: 'Directory from which the package is source from'
     default: config
     required: false
-  version_tag:
+  versionTag:
     description: 'Version tag used to build the package'
     default: dummy
     required: true
