@@ -7,12 +7,8 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/henderiw-nephio/kform/tools/pkg/fsys"
 	"github.com/henderiw-nephio/kform/tools/pkg/pkgio"
 	"github.com/henderiw/logger/log"
-	credentials "github.com/oras-project/oras-credentials-go"
-	"oras.land/oras-go/v2/registry/remote"
-	"oras.land/oras-go/v2/registry/remote/auth"
 )
 
 const (
@@ -52,8 +48,7 @@ func runMain(ctx context.Context) error {
 	fmt.Println("pkgName", pkgName)
 	fmt.Println("github token", os.Getenv("GITHUB_TOKEN"))
 
-	fs := fsys.NewDiskFS(".")
-	f, err := fs.Stat(rootPath)
+	f, err := os.Stat(rootPath)
 	if err != nil {
 		return fmt.Errorf("cannot create a pkg, rootpath %s does not exist", rootPath)
 	}
@@ -65,20 +60,22 @@ func runMain(ctx context.Context) error {
 	fmt.Println(ref)
 
 	// login
-	store, err := credentials.NewStoreFromDocker(credentials.StoreOptions{})
-	if err != nil {
-		return err
-	}
-	remoteRegistry, err := remote.NewRegistry(registryHostname)
-	if err != nil {
-		return err
-	}
-	if err = credentials.Login(ctx, store, remoteRegistry, auth.Credential{
-		Username: os.Getenv("GITHUB_ACTOR"),
-		Password: os.Getenv("GITHUB_TOKEN"),
-	}); err != nil {
-		return err
-	}
+	/*
+		store, err := credentials.NewStoreFromDocker(credentials.StoreOptions{})
+		if err != nil {
+			return err
+		}
+		remoteRegistry, err := remote.NewRegistry(registryHostname)
+		if err != nil {
+			return err
+		}
+		if err = credentials.Login(ctx, store, remoteRegistry, auth.Credential{
+			Username: os.Getenv("GITHUB_ACTOR"),
+			Password: os.Getenv("GITHUB_TOKEN"),
+		}); err != nil {
+			return err
+		}
+	*/
 
 	// write the package
 	pkgrw := pkgio.NewPkgPushReadWriter(rootPath, ref)
