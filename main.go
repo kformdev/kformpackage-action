@@ -8,7 +8,12 @@ import (
 	"os/signal"
 
 	"github.com/henderiw-nephio/kform/tools/pkg/fsys"
+	"github.com/henderiw-nephio/kform/tools/pkg/pkgio"
 	"github.com/henderiw/logger/log"
+)
+
+const (
+	hostname = "ghcr.io"
 )
 
 func main() {
@@ -31,9 +36,17 @@ func main() {
 
 func runMain(ctx context.Context) error {
 	rootPath := os.Getenv("INPUT_PKG_DIR")
+	pkgName := os.Getenv("INPUT_PKG_NAME")
+	repository := os.Getenv("GITHUB_REPOSITORY")
+	refName := os.Getenv("GITHUB_REF_NAME")
 
-	fmt.Println("reposiotry", os.Getenv("GITHUB_REPOSITORY"))
-	fmt.Println("refName", os.Getenv("GITHUB_REF_NAME"))
+	log := log.FromContext(ctx).With("repository", repository, "refName", refName, "rootPath", rootPath, "pkgName", pkgName)
+	log.Info("run kformpkg action")
+
+	fmt.Println("repository", repository)
+	fmt.Println("refName", refName)
+	fmt.Println("rootPath", rootPath)
+	fmt.Println("pkgName", pkgName)
 	fmt.Println("github token", os.Getenv("GITHUB_TOKEN"))
 
 	fs := fsys.NewDiskFS(".")
@@ -44,5 +57,13 @@ func runMain(ctx context.Context) error {
 	if !f.IsDir() {
 		return fmt.Errorf("cannot initialize a pkg on a file, please provide a directory instead, file: %s", rootPath)
 	}
-	return nil
+
+	ref := fmt.Sprintf("%s/%s/%s:%s", hostname, repository, pkgName, refName)
+	fmt.Println(ref)
+	pkgrw := pkgio.NewPkgPushReadWriter(rootPath, ref)
+	p := pkgio.Pipeline{
+		Inputs:  []pkgio.Reader{pkgrw},
+		Outputs: []pkgio.Writer{pkgrw},
+	}
+	return p.Execute(ctx)
 }

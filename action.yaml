@@ -7,6 +7,9 @@ inputs:
     description: 'Directory from which the package is sourced'
     default: config
     required: false
+  pkgName:
+    description: 'Name of the package (module or provider)'
+    required: true
 outputs:
   artifacts:
     description: 'Build result artifacts'
@@ -18,4 +21,4 @@ runs:
     shell: bash
     env:
       INPUT_PKG_DIR: ${{ inputs.pkgDir }}
-      INPUT_VERSION_TAG: ${{ inputs.versionTag }}
+      INPUT_PKG_NAME: ${{ inputs.pkgName }}
