@@ -26,4 +26,4 @@ jobs:
       env: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        versionTag: testVersionTAG
+        versionTag: ${ {github.ref_name }}

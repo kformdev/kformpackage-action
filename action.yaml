@@ -1,10 +1,10 @@
 name: 'KformPackage Action'
-description: 'KformPackage Action, a release automation tool for Kform provider and modules'
+description: 'KformPackage Action, a release automation tool for kform providers and modules'
 author: 'kform'
 
 inputs:
   pkgDir:
-    description: 'Directory from which the package is source from'
+    description: 'Directory from which the package is sourced'
     default: config
     required: false
   versionTag:
