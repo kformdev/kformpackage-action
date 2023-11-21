@@ -5,8 +5,10 @@ go 1.21.0
 toolchain go1.21.1
 
 require (
-	github.com/henderiw-nephio/kform v0.0.3-0.20231121075557-97f217266ff4
+	github.com/henderiw-nephio/kform v0.0.3-0.20231121090734-c3e12d536e7d
 	github.com/henderiw/logger v0.0.0-20230911123436-8655829b1abe
+	github.com/oras-project/oras-credentials-go v0.3.1
+	oras.land/oras-go/v2 v2.3.1
 )
 
 require (
@@ -80,7 +82,6 @@ require (
 	k8s.io/kube-openapi v0.0.0-20230905202853-d090da108d2f // indirect
 	k8s.io/utils v0.0.0-20230726121419-3b25d923346b // indirect
 	oras.land/oras-go v1.2.4 // indirect
-	oras.land/oras-go/v2 v2.3.1 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/kustomize/kyaml v0.14.3 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.3.0 // indirect

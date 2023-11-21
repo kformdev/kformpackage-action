@@ -10,10 +10,13 @@ import (
 	"github.com/henderiw-nephio/kform/tools/pkg/fsys"
 	"github.com/henderiw-nephio/kform/tools/pkg/pkgio"
 	"github.com/henderiw/logger/log"
+	credentials "github.com/oras-project/oras-credentials-go"
+	"oras.land/oras-go/v2/registry/remote"
+	"oras.land/oras-go/v2/registry/remote/auth"
 )
 
 const (
-	hostname = "ghcr.io"
+	registryHostname = "ghcr.io"
 )
 
 func main() {
@@ -58,8 +61,26 @@ func runMain(ctx context.Context) error {
 		return fmt.Errorf("cannot initialize a pkg on a file, please provide a directory instead, file: %s", rootPath)
 	}
 
-	ref := fmt.Sprintf("%s/%s/%s:%s", hostname, repository, pkgName, refName)
+	ref := fmt.Sprintf("%s/%s/%s:%s", registryHostname, repository, pkgName, refName)
 	fmt.Println(ref)
+
+	// login
+	store, err := credentials.NewStoreFromDocker(credentials.StoreOptions{})
+	if err != nil {
+		return err
+	}
+	remoteRegistry, err := remote.NewRegistry(registryHostname)
+	if err != nil {
+		return err
+	}
+	if err = credentials.Login(ctx, store, remoteRegistry, auth.Credential{
+		Username: os.Getenv("GITHUB_ACTOR"),
+		Password: os.Getenv("GITHUB_TOKEN"),
+	}); err != nil {
+		return err
+	}
+
+	// write the package
 	pkgrw := pkgio.NewPkgPushReadWriter(rootPath, ref)
 	p := pkgio.Pipeline{
 		Inputs:  []pkgio.Reader{pkgrw},
