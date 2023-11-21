@@ -52,7 +52,7 @@ require (
 	k8s.io/klog/v2 v2.100.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20230905202853-d090da108d2f // indirect
 	k8s.io/utils v0.0.0-20230726121419-3b25d923346b // indirect
-	oras.land/oras-go/v2 v2.3.1 // indirect
+	oras.land/oras-go/v2 v2.3.1-0.20231107064104-9febd7bde817 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/kustomize/kyaml v0.14.3 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.3.0 // indirect
