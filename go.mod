@@ -5,7 +5,7 @@ go 1.21.0
 toolchain go1.21.1
 
 require (
-	github.com/henderiw-nephio/kform v0.0.3-0.20231121141156-1e7665119293
+	github.com/henderiw-nephio/kform v0.0.3-0.20231121174517-c2aa9ccdef31
 	github.com/henderiw/logger v0.0.0-20230911123436-8655829b1abe
 )
 
@@ -36,11 +36,12 @@ require (
 	github.com/nephio-project/nephio/krm-functions/lib v0.0.0-20231016144953-0abe2e31adf3 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.1.0-rc5 // indirect
+	github.com/oras-project/oras-credentials-go v0.3.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/vbatts/tar-split v0.11.3 // indirect
 	github.com/xlab/treeprint v1.2.0 // indirect
 	golang.org/x/net v0.15.0 // indirect
-	golang.org/x/sync v0.4.0 // indirect
+	golang.org/x/sync v0.5.0 // indirect
 	golang.org/x/sys v0.12.0 // indirect
 	golang.org/x/text v0.13.0 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect

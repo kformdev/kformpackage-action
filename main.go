@@ -59,24 +59,6 @@ func runMain(ctx context.Context) error {
 	ref := fmt.Sprintf("%s/%s/%s:%s", registryHostname, repository, pkgName, refName)
 	fmt.Println(ref)
 
-	// login
-	/*
-		store, err := credentials.NewStoreFromDocker(credentials.StoreOptions{})
-		if err != nil {
-			return err
-		}
-		remoteRegistry, err := remote.NewRegistry(registryHostname)
-		if err != nil {
-			return err
-		}
-		if err = credentials.Login(ctx, store, remoteRegistry, auth.Credential{
-			Username: os.Getenv("GITHUB_ACTOR"),
-			Password: os.Getenv("GITHUB_TOKEN"),
-		}); err != nil {
-			return err
-		}
-	*/
-
 	// write the package
 	pkgrw := pkgio.NewPkgPushReadWriter(rootPath, ref)
 	p := pkgio.Pipeline{
