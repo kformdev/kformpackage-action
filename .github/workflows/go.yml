@@ -25,5 +25,5 @@ jobs:
       uses: kformdev/kformpackage-action@v0.0.1
       env: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        versionTag: ${{ github.ref_name }}
+#      with:
+#        refName: ${{ github.ref_name }}

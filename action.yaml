@@ -7,10 +7,12 @@ inputs:
     description: 'Directory from which the package is sourced'
     default: config
     required: false
-  versionTag:
-    description: 'Version tag used to build the package'
-    default: dummy
-    required: true
+  #refName:
+  #  description: 'The short ref name of the branch or tag that triggered the workflow run'
+  #  required: true
+  #repository:
+  #  description: 'The owner and repository name. For example, octocat/Hello-World'
+  #  required: true
 outputs:
   artifacts:
     description: 'Build result artifacts'
